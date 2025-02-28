@@ -8,7 +8,7 @@ export const apiService = {
             const response = await axios.get(`${API_URL}/categories`, {
                 auth: {
                     username: "user", // <- Podaj poprawne dane użytkownika
-                    password: "06f84cf2-cf3c-4063-836e-6fd1821a7eb1",
+                    password: "b54adb10-7876-44ba-932f-4a93e5bdeb34",
                 },
             });
             console.log("API Response:", response.data);
