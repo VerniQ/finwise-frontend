@@ -1,7 +1,7 @@
 const Budget = () => {
     return (
-        <div>
-        <h1>Budget Page</h1>
+        <div className="p-6 bg-gray-100 min-h-screen">
+        <h1>Budget Pages</h1>
         </div>
     );
 }

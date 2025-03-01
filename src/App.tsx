@@ -4,7 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
 import Budget from "./pages/Budget";
 import Reports from "./pages/Reports";
-import Transactions from "./pages/Transactions";
+import Expenses from "./pages/Expenses.tsx";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { authService } from "./services/authService";
@@ -27,21 +27,19 @@ function App() {
     return (
         <>
             {isAuthenticated ? (
-                // Authenticated layout with sidebar
-                <div className="flex min-h-auto">
+                <div className="flex max-h-width h-max">
                     <Sidebar />
-                    <div className="flex-1 p-6 flex flex-col">
+                    <div className="flex-1 p-6 flex flex-col ">
                         <Routes>
                             <Route path="/" element={<Dashboard />} />
                             <Route path="/budget" element={<Budget />} />
                             <Route path="/reports" element={<Reports />} />
-                            <Route path="/transactions" element={<Transactions />} />
+                            <Route path="/transactions" element={<Expenses />} />
                             <Route path="*" element={<Navigate to="/" />} />
                         </Routes>
                     </div>
                 </div>
             ) : (
-                // Unauthenticated routes
                 <Routes>
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
