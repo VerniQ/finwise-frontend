@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Sidebar from "./components/Sidebar";
 import Dashboard from "./pages/Dashboard";
-import Budget from "./pages/Budget";
+import Budget from "./pages/BudgetPage.tsx";
 import Reports from "./pages/Reports";
 import Expenses from "./pages/Expenses.tsx";
 import Login from "./pages/Login";

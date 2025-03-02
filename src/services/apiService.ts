@@ -73,7 +73,86 @@ export const apiService = {
         } catch (error) {
             handleApiError(error);
         }
-    }
+    },
 
+    // Budget Endpoints
+    async getBudgets() {
+        try {
+            const response = await axios.get(`${API_URL}/budgets`, {
+                headers: getAuthHeaders(),
+            });
+            return response.data;
+        } catch (error) {
+            handleApiError(error);
+        }
+    },
 
+    async getUserBudgets(userId: number) {
+        try {
+            const response = await axios.get(`${API_URL}/budgets/user/${userId}`, {
+                headers: getAuthHeaders(),
+            });
+            return response.data;
+        } catch (error) {
+            handleApiError(error);
+        }
+    },
+
+    async getUserBudgetsFiltered(userId: number, month?: number, year?: number) {
+        try {
+            const params: { month?: number; year?: number } = {};
+            if (month !== undefined) params.month = month;
+            if (year !== undefined) params.year = year;
+            const response = await axios.get(`${API_URL}/budgets/user/${userId}/filter`, {
+                headers: getAuthHeaders(),
+                params,
+            });
+            return response.data;
+        } catch (error) {
+            handleApiError(error);
+        }
+    },
+
+    async addBudget(budgetData: {
+        userId: number;
+        totalBudgetLimit: number;
+        month: number;
+        year: number;
+    }) {
+        try {
+            const response = await axios.post(`${API_URL}/budgets`, budgetData, {
+                headers: getAuthHeaders(),
+            });
+            return response.data;
+        } catch (error) {
+            handleApiError(error);
+        }
+    },
+
+    // Budget Category Endpoints
+    async getBudgetCategories() {
+        try {
+            const response = await axios.get(`${API_URL}/budget-categories`, {
+                headers: getAuthHeaders(),
+            });
+            return response.data;
+        } catch (error) {
+            handleApiError(error);
+        }
+    },
+
+    async addBudgetCategory(budgetCategoryData: {
+        budgetId: number;
+        categoryId: number;
+        categoryBudgetLimit: number;
+    }) {
+        try {
+            const response = await axios.post(`${API_URL}/budget-categories`, budgetCategoryData, {
+                headers: getAuthHeaders(),
+            });
+            return response.data;
+        } catch (error) {
+            handleApiError(error);
+        }
+    },
 };
